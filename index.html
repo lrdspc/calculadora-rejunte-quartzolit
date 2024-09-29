@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Consumo de Rejunte Quartzolit</title>
+    <meta name="description" content="Calculadora online para calcular o consumo de rejuntes Quartzolit em seus projetos de revestimento. Fácil, rápido e preciso.">
+    <meta name="keywords" content="Calculadora de Rejunte, Quartzolit, Rejunte Acrílico, Rejunte Cerâmicas, Rejunte Porcelanato, Rejunte Piscinas, Rejunte Epóxi">
+    <meta name="author" content="Lucas Rodrigues da Silva">
+    
+    <!-- Preconnect para otimizar o carregamento das fontes e ícones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pVnH6oXwO8qCjGzGf7h1PQ7ClMKTihFjBZJXcPHgjRMc0t/S4+lvQL9uyH+0VOb/+PqYlLpY+3+Hq6NkTfKXbw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="title-container">
+            <img src="https://www.quartzolit.weber/files/br/pictures/2022-12/new-logo-quartzolit_0.png" alt="Quartzolit Logo" loading="lazy" width="60" height="60">
+            <h1>Calculadora de Rejuntes</h1>
+        </div>
+
+        <form id="rejunteForm" novalidate>
+            <label for="tipoRejunte">
+                Tipo de Rejunte
+                <span class="tooltip-container" tabindex="0">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <span class="tooltiptext" role="tooltip">Selecione o tipo de rejunte que você deseja calcular.</span>
+                </span>
+            </label>
+            <select id="tipoRejunte" required>
+                <option value="">Selecione o tipo de rejunte</option>
+                <option value="acrilico">REJUNTE ACRÍLICO QUARTZOLIT</option>
+                <option value="ceramicas">REJUNTE CERÂMICAS QUARTZOLIT</option>
+                <option value="porcelanato">REJUNTE PORCELANATOS E CERÂMICAS QUARTZOLIT</option>
+                <option value="piscinas">REJUNTE PISCINAS QUARTZOLIT</option>
+                <option value="epoxi">REJUNTE EPÓXI SUPERFÁCIL QUARTZOLIT</option>
+            </select>
+
+            <label for="juntaAssentamento">
+                Junta de Assentamento (mm)
+                <span class="tooltip-container" tabindex="0">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <span class="tooltiptext" role="tooltip">Informe a largura da junta de assentamento em milímetros.</span>
+                </span>
+            </label>
+            <input type="number" id="juntaAssentamento" required step="0.1" placeholder="Selecione o tipo de rejunte primeiro" aria-describedby="juntaHelp">
+
+            <label for="ladoA">
+                Lado (A): altura do revestimento
+                <span class="tooltip-container" tabindex="0">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <span class="tooltiptext" role="tooltip">Insira a altura do revestimento em mm ou cm.</span>
+                </span>
+            </label>
+            <div class="input-group">
+                <input type="number" id="ladoA" step="any" required placeholder="Ex: 60">
+                <select id="unidadeLadoA" aria-label="Unidade de medida para Lado A">
+                    <option value="mm">mm</option>
+                    <option value="cm" selected>cm</option>
+                </select>
+            </div>
+
+            <label for="ladoB">
+                Lado (B): largura do revestimento
+                <span class="tooltip-container" tabindex="0">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <span class="tooltiptext" role="tooltip">Insira a largura do revestimento em mm ou cm.</span>
+                </span>
+            </label>
+            <div class="input-group">
+                <input type="number" id="ladoB" step="any" required placeholder="Ex: 60">
+                <select id="unidadeLadoB" aria-label="Unidade de medida para Lado B">
+                    <option value="mm">mm</option>
+                    <option value="cm" selected>cm</option>
+                </select>
+            </div>
+
+            <label for="espessura">
+                Espessura do Revestimento (mm)
+                <span class="tooltip-container" tabindex="0">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <span class="tooltiptext" role="tooltip">Informe a espessura do revestimento em milímetros.</span>
+                </span>
+            </label>
+            <input type="number" id="espessura" required step="0.1" placeholder="Ex: 10">
+
+            <label for="areaInserida">
+                Área (m²)
+                <span class="tooltip-container" tabindex="0">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <span class="tooltiptext" role="tooltip">Informe a área total a ser coberta em metros quadrados.</span>
+                </span>
+            </label>
+            <input type="number" id="areaInserida" required step="any" placeholder="Ex: 50">
+
+            <div class="button-group">
+                <button type="submit" id="calcularBtn" disabled>
+                    <i class="fa fa-calculator" aria-hidden="true"></i> Calcular
+                </button>
+                <button type="reset" id="resetBtn">
+                    <i class="fa fa-redo" aria-hidden="true"></i> Redefinir
+                </button>
+                <button type="button" id="ajudaBtn">
+                    <i class="fa fa-question-circle" aria-hidden="true"></i> Ajuda
+                </button>
+            </div>
+        </form>
+
+        <!-- Mensagem de Erro -->
+        <div id="error-message" class="error-message" role="alert" aria-live="assertive"></div>
+
+        <!-- Seção de Resultados -->
+        <div class="resultados" aria-live="polite">
+            <h2>Resultados</h2>
+            <p><strong>Área de Aplicação:</strong> <span id="resultadoArea">0 m²</span></p>
+            <p><strong>Consumo (Kg/m²):</strong> <span id="resultadoConsumoPorM2">0 Kg/m²</span></p>
+            <p><strong>Consumo Total (Kg):</strong> <span id="resultadoConsumoTotal">0 Kg</span></p>
+            <a id="linkRejunte" href="#" target="_blank">SAIBA MAIS SOBRE O REJUNTE QUARTZOLIT</a>
+        </div>
+
+        <!-- Seção de Ajuda -->
+        <div id="ajudaSection" class="ajuda-section" aria-hidden="true">
+            <h2>Ajuda</h2>
+            <ul class="ajuda-list">
+                <li><strong>Dimensões do Revestimento:</strong> Insira a altura (Lado A) e a largura (Lado B) do revestimento.</li>
+                <li><strong>Junta de Assentamento:</strong> Informe a largura da junta de assentamento em milímetros.</li>
+                <li><strong>Espessura do Revestimento:</strong> Defina a espessura do revestimento em milímetros.</li>
+                <li><strong>Área Total:</strong> Insira a área total a ser coberta em metros quadrados.</li>
+            </ul>
+            <p>Para mais informações, visite: <a href="https://www.quartzolit.weber/argamassas-e-rejuntes-quartzolit/rejuntes-quartzolit/tudo-sobre-os-tipos-de-rejuntes-e-suas-funcoes/dicas-importantes-sobre-rejuntes" target="_blank">Dicas Importantes sobre Rejuntes</a></p>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Desenvolvido por <strong>Lucas Rodrigues da Silva</strong> - Especialista Técnico Saint-Gobain</p>
+        <p>
+            <a href="https://wa.me/+5511957240788" target="_blank" aria-label="WhatsApp"><i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp</a> | 
+            <a href="mailto:lucas.silva@closetoconsumer.com.br" aria-label="Email"><i class="fa fa-envelope" aria-hidden="true"></i> Email</a> | 
+            <a href="https://www.linkedin.com/in/rdslucas/" target="_blank" aria-label="LinkedIn"><i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</a> | 
+            <a href="https://www.instagram.com/lucas.silva.sg" target="_blank" aria-label="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a>
+        </p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="scripts.js"></script>
+</body>
+</html>
